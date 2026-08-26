@@ -1,9 +1,18 @@
-# Phase 1B — Q1/Q2 Embedding + Retrieval-Query Experiment (design, pending review)
+# Phase 1B — Q1/Q2 Embedding + Retrieval-Query Experiment (FROZEN)
 
-**Status: NOT YET RUN.** This is the frozen design for your review, per your instruction
-not to modify the disease list or pool after seeing results, to avoid experimenter bias.
-Once you confirm the 32 hand-authored queries are sound (or correct them), this gets
-executed exactly as specified — no adjustments after results come in.
+**Status: FROZEN, approved for execution.** Reviewed against the actual 32 hand-authored
+queries; 4 minor wording corrections applied (D1-Q5 "nearby" removed, D3-Q5 "starting
+from" → "associated with" cankers, D6-Q5 narrowed to potato-only to match the selected
+PlantVillage domain, D7-Q5 "stone fruit" → "peach and other stone fruit"). No further
+changes to the disease list, pool construction, or query text once results start coming
+in — per the explicit no-post-hoc-adjustment rule agreed on to avoid experimenter bias.
+
+Note on scope: this experiment resolves Q1 (embedding model choice) directly via the
+Recall@k/MRR numbers, and gives evidence toward Q2 (retrieval query construction) via the
+per-query-type breakdown — but doesn't fully settle Q2 on its own, since the real system
+still needs a decision on what Qwen3-VL's actual retrieval query should look like
+(disease candidate alone vs. visual description vs. a combination). That remains a
+downstream decision informed by, not automatically solved by, these results.
 
 Full machine-readable spec: [server-scripts/q1q2_query_spec.json](server-scripts/q1q2_query_spec.json).
 
