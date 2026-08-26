@@ -1,0 +1,34 @@
+[
+  {
+    "query_id": "D1",
+    "target_disease": "cedar apple rust",
+    "failure_type": "missing distinctive feature (orange tubes)",
+    "prompt_e_text": "Species: unknown\nVisible diagnostic features:\n- Lesion color: brown\n- Lesion shape: irregular\n- Lesion distribution/pattern: scattered\n- Presence of halos: not observed\n- Presence of concentric rings: not observed\n- Surface texture/structures: not observed\n- Underside structures (if visible): not observed\n- Leaf deformation/curling: not observed\n- Necrosis/tissue death: yes\n- Fruit symptoms (if visible): not observed",
+    "prompt_e_first_relevant_rank": null,
+    "prompt_e_top1_disease": "black rot"
+  },
+  {
+    "query_id": "D6",
+    "target_disease": "early blight",
+    "failure_type": "missing distinctive feature (concentric rings)",
+    "prompt_e_text": "Species: unknown\nVisible diagnostic features:\n- Lesion color: \n- Lesion shape: \n- Lesion distribution/pattern: \n- Presence of halos: \n- Presence of concentric rings: \n- Surface texture/structures: \n- Underside structures (if visible): \n- Leaf deformation/curling: \n- Necrosis/tissue death: \n- Fruit symptoms (if visible):",
+    "prompt_e_first_relevant_rank": 13,
+    "prompt_e_top1_disease": "black rot"
+  },
+  {
+    "query_id": "D7",
+    "target_disease": "bacterial leaf spot",
+    "failure_type": "wrong species previously hurt retrieval",
+    "prompt_e_text": "Species: unknown\nVisible diagnostic features:\n- Lesion color: not observed\n- Lesion shape: not observed\n- Lesion distribution/pattern: not observed\n- Presence of halos: not observed\n- Presence of concentric rings: not observed\n- Surface texture/structures: slightly wrinkled, vein pattern visible, small brown spots\n- Underside structures (if visible): not visible\n- Leaf deformation/curling: not observed\n- Necrosis/tissue death: small brown spots\n- Fruit symptoms (if visible): not observed",
+    "prompt_e_first_relevant_rank": 2,
+    "prompt_e_top1_disease": "black rot"
+  },
+  {
+    "query_id": "D4",
+    "target_disease": "powdery mildew",
+    "failure_type": "control (already succeeded with prompt C)",
+    "prompt_e_text": "Species: unknown\nVisible diagnostic features:\n- Lesion color: not observed\n- Lesion shape: not observed\n- Lesion distribution/pattern: not observed\n- Presence of halos: not observed\n- Presence of concentric rings: not observed\n- Surface texture/structures: mottled, irregular green patterns; visible venation\n- Underside structures (if visible): not observed\n- Leaf deformation/curling: not observed\n- Necrosis/tissue death: not observed\n- Fruit symptoms (if visible): not observed",
+    "prompt_e_first_relevant_rank": 7,
+    "prompt_e_top1_disease": "black rot"
+  }
+]
