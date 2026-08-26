@@ -1,0 +1,118 @@
+{
+  "D1_cedar_apple_rust": {
+    "target_disease": "cedar apple rust",
+    "conditions": {
+      "qwen": {
+        "text": "Species: unknown\nVisible symptoms:\n- Leaf is green with irregular brown spots\n- Some spots appear as small, scattered lesions\n- Leaf margin is slightly serrated\n- Veins are visible and appear darker than surrounding leaf tissue\n- Leaf tip is pointed\n- Leaf base has a short petiole attached",
+        "rank": 1755,
+        "top1_sim": 0.858759880065918,
+        "top1_disease": "phyllosticta leaf spot"
+      },
+      "human": {
+        "text": "apple tree leaves with bright orange-yellow spots and orange tubular growths underneath",
+        "rank": 3,
+        "top1_sim": 0.818782389163971,
+        "top1_disease": "apple scab and possibly other foliar diseases, cankers, scale insects"
+      },
+      "hybrid": {
+        "text": "Species: unknown\nVisible symptoms:\n- Leaf is green with irregular brown spots\n- Some spots appear as small, scattered lesions\n- Leaf margin is slightly serrated\n- Veins are visible and appear darker than surrounding leaf tissue\n- Leaf tip is pointed\n- Leaf base has a short petiole attached\n- Orange gelatinous tube-like structures visible on the underside of the leaf",
+        "rank": 1689,
+        "top1_sim": 0.8558772802352905,
+        "top1_disease": "phyllosticta leaf spot"
+      },
+      "oracle_species": {
+        "text": "Species: apple\nVisible symptoms:\n- Leaf is green with irregular brown spots\n- Some spots appear as small, scattered lesions\n- Leaf margin is slightly serrated\n- Veins are visible and appear darker than surrounding leaf tissue\n- Leaf tip is pointed\n- Leaf base has a short petiole attached",
+        "rank": 43,
+        "top1_sim": 0.846163272857666,
+        "top1_disease": "multiple possibilities: unknown leaf spot, leaf miner, apple scab"
+      }
+    }
+  },
+  "D6_early_blight": {
+    "target_disease": "early blight",
+    "conditions": {
+      "qwen": {
+        "text": "Species: unknown\nVisible symptoms:\n- Leaf is green with visible veins\n- Numerous dark brown to black spots scattered across the surface\n- Some spots are clustered, others are isolated\n- Leaf margin appears slightly curled or irregular\n- Some areas of the leaf show necrotic or discolored tissue\n- Leaf surface appears somewhat wrinkled or textured\n- Tip of leaf is slightly curled or damaged\n- Overall leaf shape is ovate with a pointed tip",
+        "rank": 228,
+        "top1_sim": 0.8454813361167908,
+        "top1_disease": "leaf spot"
+      },
+      "human": {
+        "text": "potato plant with bullseye-patterned brown spots on the older lower leaves",
+        "rank": 1,
+        "top1_sim": 0.7975026369094849,
+        "top1_disease": "early blight"
+      },
+      "hybrid": {
+        "text": "Species: unknown\nVisible symptoms:\n- Leaf is green with visible veins\n- Numerous dark brown to black spots scattered across the surface\n- Some spots are clustered, others are isolated\n- Leaf margin appears slightly curled or irregular\n- Some areas of the leaf show necrotic or discolored tissue\n- Leaf surface appears somewhat wrinkled or textured\n- Tip of leaf is slightly curled or damaged\n- Overall leaf shape is ovate with a pointed tip\n- Spots show concentric target-like rings (bullseye pattern)",
+        "rank": 214,
+        "top1_sim": 0.8468005657196045,
+        "top1_disease": "phyllosticta leaf spot"
+      },
+      "oracle_species": {
+        "text": "Species: potato\nVisible symptoms:\n- Leaf is green with visible veins\n- Numerous dark brown to black spots scattered across the surface\n- Some spots are clustered, others are isolated\n- Leaf margin appears slightly curled or irregular\n- Some areas of the leaf show necrotic or discolored tissue\n- Leaf surface appears somewhat wrinkled or textured\n- Tip of leaf is slightly curled or damaged\n- Overall leaf shape is ovate with a pointed tip",
+        "rank": 5,
+        "top1_sim": 0.8288646936416626,
+        "top1_disease": "leaf spot"
+      }
+    }
+  },
+  "D7_bacterial_leaf_spot": {
+    "target_disease": "bacterial leaf spot",
+    "conditions": {
+      "qwen": {
+        "text": "Species: unknown\nVisible symptoms:\n- elongated leaf with wavy margins\n- surface appears textured or puckered\n- small brown spots near midrib\n- tip of leaf is curled upward\n- leaf is green with some browning at tip and along margin",
+        "rank": 16,
+        "top1_sim": 0.831751823425293,
+        "top1_disease": "phyllosticta leaf spot"
+      },
+      "human": {
+        "text": "peach tree with small dark angular leaf spots and a shot-hole appearance, and sunken cracked spots on the fruit",
+        "rank": 65,
+        "top1_sim": 0.8403757810592651,
+        "top1_disease": "peach shot hole (coryneum blight)"
+      },
+      "hybrid": {
+        "text": "Species: unknown\nVisible symptoms:\n- elongated leaf with wavy margins\n- surface appears textured or puckered\n- small brown spots near midrib\n- tip of leaf is curled upward\n- leaf is green with some browning at tip and along margin\n- Some spots have fallen out of the leaf tissue, leaving a shot-hole appearance",
+        "rank": 18,
+        "top1_sim": 0.8545676469802856,
+        "top1_disease": "phyllosticta leaf spot"
+      },
+      "oracle_species": {
+        "text": "Species: peach\nVisible symptoms:\n- elongated leaf with wavy margins\n- surface appears textured or puckered\n- small brown spots near midrib\n- tip of leaf is curled upward\n- leaf is green with some browning at tip and along margin",
+        "rank": 93,
+        "top1_sim": 0.8311171531677246,
+        "top1_disease": "possibly peach leaf curl or brown rot"
+      }
+    }
+  },
+  "D4_powdery_mildew": {
+    "target_disease": "powdery mildew",
+    "conditions": {
+      "qwen": {
+        "text": "Species: unknown\nVisible symptoms:\n- Leaf is heart-shaped with a pointed tip\n- Surface has mottled green and lighter green patterns\n- Veins are visible and prominent\n- Edges appear slightly curled or irregular\n- Small brownish spot near the base of the petiole\n- Overall texture appears somewhat wrinkled or puckered",
+        "rank": 40,
+        "top1_sim": 0.8131077289581299,
+        "top1_disease": "phyllosticta leaf spot"
+      },
+      "human": {
+        "text": "cherry tree leaves covered in a white powdery coating with some curling and distortion",
+        "rank": 1,
+        "top1_sim": 0.7560248374938965,
+        "top1_disease": "powdery mildew"
+      },
+      "hybrid": {
+        "text": "Species: unknown\nVisible symptoms:\n- Leaf is heart-shaped with a pointed tip\n- Surface has mottled green and lighter green patterns\n- Veins are visible and prominent\n- Edges appear slightly curled or irregular\n- Small brownish spot near the base of the petiole\n- Overall texture appears somewhat wrinkled or puckered\n- Surface has a white to grayish powdery coating",
+        "rank": 12,
+        "top1_sim": 0.8135678172111511,
+        "top1_disease": "phyllosticta leaf spot"
+      },
+      "oracle_species": {
+        "text": "Species: cherry\nVisible symptoms:\n- Leaf is heart-shaped with a pointed tip\n- Surface has mottled green and lighter green patterns\n- Veins are visible and prominent\n- Edges appear slightly curled or irregular\n- Small brownish spot near the base of the petiole\n- Overall texture appears somewhat wrinkled or puckered",
+        "rank": 58,
+        "top1_sim": 0.827307939529419,
+        "top1_disease": "cherry leaf spot"
+      }
+    }
+  }
+}
