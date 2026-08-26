@@ -116,14 +116,12 @@ implementation detail:
    disease-vs-healthy for free; AgMMU's 770-entry eval set gives MCQ-format ground truth
    with richer background context. Decide which drives the headline accuracy numbers, or
    how to combine both.
-5. **Preprocessing of the 45,096 facts** — now backed by actual inspection, see
-   [agmmu-facts-inspection.md](agmmu-facts-inspection.md). Key numbers: only 19% of
-   entries have a disease field and only 39.4% (17,760) have disease-or-pest content at
-   all; 19.2% are species-only with no diagnostic content; 13.7% are exact-content
-   duplicates; 3 entries have a malformed multi-species dict shape that will crash naive
-   code. Still your call: keep the full 45,096 or filter down to the ~17,760
-   disease/pest-bearing entries, whether to dedupe, and how to handle the malformed
-   records.
+5. ~~Preprocessing of the 45,096 facts~~ — **decided**, see
+   [phase1a-preprocessing-decisions.md](phase1a-preprocessing-decisions.md): split into a
+   ~17,760-entry diagnostic corpus and a ~27,336-entry context corpus (kept, not deleted,
+   so retrieval-population choice stays a separate later experiment); dedupe the
+   retrieval corpus while preserving `source_faq_ids` traceability; normalize (not
+   exclude) the 3 dict-shaped multi-species answers; keep `species_raw` unnormalized.
 6. **FAISS vs Qdrant vs plain numpy** — the finalized architecture names Qdrant, but at
    45K facts even brute-force cosine similarity in numpy runs in well under a second.
    Worth deciding whether Qdrant is worth standing up for Phase 1 or whether that's
