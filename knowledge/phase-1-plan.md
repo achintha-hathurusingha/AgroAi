@@ -104,19 +104,19 @@ implementation detail:
    [phase1b-q1q2-results.md](phase1b-q1q2-results.md): won every metric on the controlled
    47-query benchmark (R@1=0.681, R@3=0.809, R@5=0.830, MRR=0.751), beating both
    sentence-transformers/all-MiniLM-L6-v2 and SigLIP's text tower.
-2. ~~Exact retrieval query construction~~ — **provisionally decided, not proven optimal.**
-   See [phase1b-q2-isolation-results.md](phase1b-q2-isolation-results.md): raw open-ended
-   VLM captioning is rejected outright (0% R@1, and a confident wrong species claim was
-   shown to actively damage retrieval — same image, same target disease, rank 1 vs rank
-   15 depending only on whether species was falsely claimed). Direction selected instead:
-   **structured visual-evidence extraction with species treated as optional/unknown**,
-   not a plain candidate-disease guess or an unconstrained description. A structured
-   "Species: unknown + bulleted symptoms" prompt recovered most of the lost performance
-   (28.6% R@1) with no extra token budget needed. A remaining gap to the hand-authored
-   benchmark (62–100% R@1) traces partly to the VLM's descriptions missing each disease's
-   *specific* diagnostic feature (e.g. cedar apple rust's orange tube structures, early
-   blight's concentric rings) even when not hallucinating — being validated further with
-   a diagnostic-feature-focused prompt variant on a small hard-case set.
+2. ~~Exact retrieval query construction~~ — **decided for Phase 1: Prompt C's format**
+   (structured, `Species: unknown` + free-form bulleted symptom list — not a rigid
+   fill-in-the-blank feature checklist, not an unconstrained open-ended description, not
+   a bare candidate-disease guess). See [phase1b-q2-isolation-results.md](phase1b-q2-isolation-results.md)
+   and [phase1b-q2-diagnostic-feature-validation.md](phase1b-q2-diagnostic-feature-validation.md).
+   Evidence is C > A (28.6% vs 0% R@1) and C > E (a more rigid diagnostic-feature-checklist
+   variant that suppressed descriptive content and regressed a previously-solved control
+   case from rank 1 to rank 7) — **not** evidence that C is globally optimal, only that
+   it's the best of what was tested. Known remaining limitation, not solved: even Prompt C
+   sometimes misses a disease's specific discriminative feature (e.g. cedar apple rust's
+   orange tube structures, early blight's concentric rings), which no query-construction
+   fix can compensate for if the VLM's visual description never captures it in the first
+   place. Decision closed for now — not being iterated on further in Phase 1B.
 3. **Reranking method** for ablation arm 5 — a cross-encoder, an LLM-as-reranker prompt,
    or something else.
 4. **Ground-truth source per experiment** — PlantVillage folder labels give species +
