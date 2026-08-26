@@ -45,21 +45,46 @@ pass/fail number.
 - Confidence calibration, where the system reports a confidence score
 - Abstention/uncertainty handling, where applicable
 
-## Ground-truth source — proposed, needs your confirmation
+## Ground-truth source — FROZEN
 
-This was the one item in the original open-questions list not yet resolved by an
-experiment. Proposal:
+**Q4 closed.** A hierarchical policy, not a blended pool — chosen specifically to keep
+evaluation truth cleanly separated from AgMMU, which is simultaneously the retrieval
+knowledge source (using AgMMU's own eval annotations as the *primary* truth would blur
+that separation for exactly the cases where it matters most).
 
-- **Primary**: PlantVillage folder labels (species + disease-vs-healthy), since every
-  main-ablation test image is a real PlantVillage image already in use throughout Phase 1
-  — this ties ground truth directly to the actual images being tested, no indirection.
-- **Secondary/supplementary**: AgMMU's 770-entry eval set (MCQ format, richer background
-  context per question) — useful as an additional, differently-sourced check, but not the
-  primary driver of headline accuracy numbers, since it doesn't share the same image set
-  as the main ablation's test cases.
+| Situation | Ground truth | Role |
+|---|---|---|
+| Evaluation image has a valid PlantVillage disease class | PlantVillage | **Primary** |
+| No appropriate PlantVillage class exists | AgMMU evaluation annotation | Secondary |
+| Both exist and disagree | — | **Flagged for adjudication, never silently resolved** |
+| Neither provides a defensible disease label | — | **Excluded from the accuracy denominator, reported separately** |
 
-This is a proposal, not a freeze — flagging explicitly since ground-truth source is a
-real design choice, not a fact to verify.
+**Non-negotiable rule**: the ground-truth label is fixed *before* inference and is never
+derived from the model's prediction, the retrieved fact, or the query text — consistent
+with the same principle already applied to `target_disease` throughout Phase 1B (declared
+independently of query text, never inferred from it).
+
+**Provenance tracking**: every evaluation case records `ground_truth_source` as either
+`"plantvillage"` or `"agmmu_eval"`. Results are reported both overall and broken out by
+source:
+
+| Subset | Accuracy |
+|---|--:|
+| PlantVillage ground truth | — |
+| AgMMU ground truth | — |
+| Overall | — |
+
+This exists specifically to preempt the legitimate question of how much reported accuracy
+depends on labels drawn from the same ecosystem as the retrieval knowledge base.
+
+## Retrieval success vs. diagnostic success stay separate outcomes
+
+Already established as a design principle above — restated here because it's essential to
+interpreting the ablation correctly: retrieving the correct fact and diagnosing correctly
+are not the same event. A case can have `retrieval=success, diagnosis=failure` (the right
+fact was retrieved but the VLM still got it wrong) or `retrieval=failure, diagnosis=success`
+(the VLM diagnosed correctly without the exact fact being retrieved). Both get recorded as
+distinct, valid outcomes — never collapsed into a single pass/fail number.
 
 ## Leakage audit (performed as part of this closure pass)
 

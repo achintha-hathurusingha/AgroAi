@@ -138,10 +138,26 @@ implementation detail:
    reranking gets evaluated on its own merits in Phase 2 — not assumed to help, given the
    bottleneck diagnosis showing correct facts sometimes rank thousands of positions down,
    which a reranker over a limited candidate set can't rescue by construction.
-4. **Ground-truth source per experiment** — proposed in [phase2-evaluation-protocol.md](phase2-evaluation-protocol.md)
-   (PlantVillage labels primary, AgMMU's 770-entry eval set secondary) but flagged there
-   as a proposal needing your confirmation, not a freeze — this is a real design choice,
-   unlike the corpus freeze and leakage audit in the same document, which are checks.
+4. ~~Ground-truth source per experiment~~ — **decided: hierarchical, not blended.** See
+   [phase2-evaluation-protocol.md](phase2-evaluation-protocol.md): PlantVillage primary
+   where a valid class exists, AgMMU's eval annotations secondary only when it doesn't,
+   disagreements flagged for adjudication rather than silently resolved, undecidable cases
+   excluded from the accuracy denominator and reported separately. Every case records
+   `ground_truth_source` for provenance, with accuracy reported both overall and broken
+   out by source — specifically to preempt "how much of this accuracy comes from labels
+   in the same ecosystem as the retrieval knowledge base."
+
+---
+
+## PHASE 1 → COMPLETE
+
+All six open questions resolved (Q1 BGE-micro-v2, Q2 Prompt C baseline/no robust winner,
+Q3 reranking deferred to Phase 2, Q4 hierarchical ground truth, Q5 preprocessing, Q6
+NumPy), corpus frozen as `agmmu_phase2_v1` with checksums, leakage audit clean. Phase 2's
+main ablation (the five arms from [AgriVision-RAG-architecture.md](AgriVision-RAG-architecture.md),
+using the frozen corpus and protocol in [phase2-evaluation-protocol.md](phase2-evaluation-protocol.md))
+is unblocked. Not starting it automatically — that's a substantial new phase of work and
+should begin on your explicit go-ahead, not by default continuation.
 5. ~~Preprocessing of the 45,096 facts~~ — **decided**, see
    [phase1a-preprocessing-decisions.md](phase1a-preprocessing-decisions.md): split into a
    ~17,760-entry diagnostic corpus and a ~27,336-entry context corpus (kept, not deleted,
