@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <title>CVPR 2026 Open Access Repository</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/conf.css">
+<meta name="citation_title" content="AgriRAG: Training-Free Retrieval-Augmented Generation for Agricultural Disease Diagnosis with Vision-Language Models">
+<meta name="citation_author" content="Junior, Luiz Carlos Marques">
+<meta name="citation_author" content="Manesco, João Renato Ribeiro">
+<meta name="citation_author" content="Papa, João Paulo">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_conference_title" content="Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition">
+<meta name="citation_firstpage" content="9673">
+<meta name="citation_lastpage" content="9681">
+<meta name="citation_pdf_url" content="https://openaccess.thecvf.com/content/CVPR2026W/V4A/papers/Marques_AgriRAG_Training-Free_Retrieval-Augmented_Generation_for_Agricultural_Disease_Diagnosis_with_Vision-Language_CVPRW_2026_paper.pdf">
+</head>
+<body>
+<div id="header">
+    <div id="header_left">
+        <a href="https://cvpr.thecvf.com/"><img src="/img/CVPR2026_logo.png" width="175" border="0" alt="CVPR 2026"></a>
+        <a href="https://www.thecvf.com/"><img src="/img/cropped-cvf-s.jpg" width="175" height="112" border="0" alt="CVF"></a>
+    </div>
+    <div id="header_right">
+        <div id="header_title">
+            <a href="https://cvpr.thecvf.com/">CVPR 2026</a> <a href="/menu" class="a_monochrome">open access</a>
+        </div>
+        <div id="help">
+            These CVPR 2026 workshop papers are the Open Access versions, provided by the
+<a href="https://www.thecvf.com/">Computer Vision Foundation.</a><br>
+Except for the watermark, they are identical to the accepted versions;
+the final published version of the proceedings is available on IEEE Xplore.
+        </div>
+        <div id="disclaimer">
+            This material is presented to ensure timely dissemination of scholarly and technical work.
+Copyright and all rights therein are retained by authors or by other copyright holders.
+All persons copying this information are expected to adhere to the terms and constraints invoked 
+by each author's copyright.<br><br>
+            <form action="/CVPR2026_workshops" method="post">
+                <input type="text" name="query">
+                <input type="submit" value="Search">
+            </form>
+
+        </div>
+    </div>
+    <div id="header_sponsor">
+        <p style="vertical-align:center; text-align: center"> <strong>Powered by:</strong></p>
+        <img src="/img/ms-azure-logo.png" width="100" alt="Microsoft Azure">
+        <p> </p>
+        <p> </p>
+        <p style="vertical-align:center; text-align: center"> <strong>Sponsored by:</strong></p>
+        <img src="/img/amazon-logo.png" width="100" alt="Amazon">
+        <img src="/img/facebook_logo.jpg" width="100" alt="Facebook">
+        <img src="/img/Google_2015_logo.svg" width="100" alt="Google">
+    </div>
+</div>
+<div class="clear"></div>
+<div id="content">    <dl>
+    <div id="papertitle">
+        AgriRAG: Training-Free Retrieval-Augmented Generation for Agricultural Disease Diagnosis with Vision-Language Models
+    <dd>
+    </div>
+    <div id="authors">        <br><b><i>Luiz Carlos Marques Junior, João Renato Ribeiro Manesco, João Paulo Papa</i></b>; Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops, 2026, pp. 9673-9681
+    </div>
+    <font size="5">
+    <br><b>Abstract</b>
+    </font>
+    <br><br>
+    <div id="abstract">
+    We present AgriRAG, a training-free, visual-first Retrieval-Augmented Generation (RAG) pipeline for agricultural pathology diagnosis, where retrieval is driven entirely by image embeddings without gradient updates. It couples a SigLIP-based image retrieval module with the Qwen3-VL-8B vision-language model, running via 4-bit quantization on a consumer-grade NVIDIA RTX 4070 Ti GPU (12 GB VRAM). Unlike prior approaches that require fine-tuning on domain-specific data, AgriRAG leverages a unified knowledge base of 74,611 embeddings of expert-verified facts fused from two complementary agricultural corpora (AgMMU and MIRAGE), dynamically retrieving the most relevant context at inference time without gradient updates. We evaluate on the AgMMU benchmark with 1,635 samples across six agronomic categories. AgriRAG achieves 83.7 percent MCQ accuracy (95 percent CI: 81.9 percent to 85.5 percent), surpassing all open-source baselines, including InternVL2-26B (68.1 percent) and LLaVA-1.6-34B (61.3 percent), and narrowing the gap to GPT-4o (86.2 percent) to 2.5 percentage points (McNemar p-value below 0.001). An ablation study reveals a 40.2 percentage point gain from zero-shot to RAG-augmented inference, showing that retrieval, not parameter scale, is the primary performance driver for agricultural visual reasoning. These results show that high-quality crop diagnostics are achievable on commodity hardware without cloud APIs or domain-specific fine-tuning. On the MIRAGE generative benchmark (502 queries, 7 categories), AgriRAG further achieves a 46 percent relative improvement over GPT-4.1 in entity identification (0.640 vs. 0.439) and a 15.9 percent improvement in management guidance (W-Sum 0.950 vs. 0.820), establishing a new state of the art for training-free agricultural generative reasoning.
+    </div>
+    <font size="5">
+    <br><b>Related Material</b>
+    </font>
+    <br><br>    <dd>
+[<a href="/content/CVPR2026W/V4A/papers/Marques_AgriRAG_Training-Free_Retrieval-Augmented_Generation_for_Agricultural_Disease_Diagnosis_with_Vision-Language_CVPRW_2026_paper.pdf">pdf</a>]
+<div class="link2">[<a class="fakelink" onclick="$(this).siblings('.bibref').slideToggle()">bibtex</a>]
+<div class="bibref pre-white-space">@InProceedings{Junior_2026_CVPR,
+    author    = {Junior, Luiz Carlos Marques and Manesco, Jo\~ao Renato Ribeiro and Papa, Jo\~ao Paulo},
+    title     = {AgriRAG: Training-Free Retrieval-Augmented Generation for Agricultural Disease Diagnosis with Vision-Language Models},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2026},
+    pages     = {9673-9681}
+}</div>
+</div>        
+</dd></dl></div>
+</body>
+</html>
