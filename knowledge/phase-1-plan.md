@@ -100,10 +100,16 @@ creep. Revisit only after the core ablation study produces results:
 The finalized scope resolves *what* to build and *how to evaluate it*, but not every
 implementation detail:
 
-1. ~~Text embedding model~~ — **decided: `TaylorAI/bge-micro-v2`.** See
-   [phase1b-q1q2-results.md](phase1b-q1q2-results.md): won every metric on the controlled
-   47-query benchmark (R@1=0.681, R@3=0.809, R@5=0.830, MRR=0.751), beating both
-   sentence-transformers/all-MiniLM-L6-v2 and SigLIP's text tower.
+1. ~~Text embedding model~~ — **decided: `TaylorAI/bge-micro-v2`, re-validated at full
+   scale with a corrected margin.** Original 400-fact-pool result in
+   [phase1b-q1q2-results.md](phase1b-q1q2-results.md) (R@1=0.681, clear win). A Milestone
+   3 control-case failure revealed that pool was too small to represent real retrieval
+   difficulty (same query, same code: rank 1 in the 400-fact pool, rank 40 in the full
+   17,583-fact corpus — see [milestone3-control-failure-diagnosis.md](milestone3-control-failure-diagnosis.md)),
+   so Q1 was re-run at full scale: [phase1b5-fullscale-validation-results.md](phase1b5-fullscale-validation-results.md).
+   BGE still wins overall (R@3=0.596, R@5=0.617, R@10=0.702, R@20=0.787, MRR=0.526, all
+   best of the three) but **ties sentence-transformers exactly at R@1 (0.426 each)** at
+   full scale — the original "clearly wins" framing overstated the margin.
 2. ~~Exact retrieval query construction~~ — **decided for Phase 1: Prompt C's format**
    (structured, `Species: unknown` + free-form bulleted symptom list — not a rigid
    fill-in-the-blank feature checklist, not an unconstrained open-ended description, not
