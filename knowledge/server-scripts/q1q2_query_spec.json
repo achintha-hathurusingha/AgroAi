@@ -1,0 +1,59 @@
+{
+  "_notes": "Frozen Phase 1B query specification for the Q1 (embedding model) / Q2 (retrieval query construction) experiment. target_disease is declared independently of query_text per methodological review -- evaluation must look up target_disease directly, never infer it by parsing query_text. query_type 'vlm_caption' has query_text=null; it is filled in at execution time from a real Qwen3-VL caption of a real PlantVillage image, then the spec (with the actual caption recorded) is logged alongside results for reproducibility.",
+  "queries": [
+    {"query_id": "D1-Q1", "target_disease": "cedar apple rust", "query_type": "disease_name", "query_text": "Cedar apple rust"},
+    {"query_id": "D1-Q2", "target_disease": "cedar apple rust", "query_type": "symptoms", "query_text": "small yellow-orange spots on the upper leaf surface that enlarge and develop tiny black dots, with orange gelatinous tube-like structures forming on the underside of the leaf later in the season"},
+    {"query_id": "D1-Q3", "target_disease": "cedar apple rust", "query_type": "species_symptoms", "query_text": "apple tree leaves with bright orange-yellow spots and orange tubular growths underneath"},
+    {"query_id": "D1-Q4", "target_disease": "cedar apple rust", "query_type": "description_no_name", "query_text": "An apple tree shows leaves with distinct orange or rust-colored blotches on top, and as the season progresses, small tube-like orange growths appear on the underside of the same spots."},
+    {"query_id": "D1-Q5", "target_disease": "cedar apple rust", "query_type": "management", "query_text": "how to manage an apple tree fungal disease that causes orange rust-colored leaf spots and requires a nearby juniper or cedar host to complete its life cycle"},
+    {"query_id": "D1-Q6", "target_disease": "cedar apple rust", "query_type": "vlm_caption", "query_text": null, "source_image_class": "Apple___Cedar_apple_rust"},
+
+    {"query_id": "D2-Q1", "target_disease": "apple scab", "query_type": "disease_name", "query_text": "Apple scab"},
+    {"query_id": "D2-Q2", "target_disease": "apple scab", "query_type": "symptoms", "query_text": "olive-green to black velvety spots on leaves and fruit; leaves may pucker, curl, or drop prematurely; scabby, corky lesions develop on the fruit surface"},
+    {"query_id": "D2-Q3", "target_disease": "apple scab", "query_type": "species_symptoms", "query_text": "apple tree with dark olive-green spots on leaves and scabby lesions on the fruit"},
+    {"query_id": "D2-Q4", "target_disease": "apple scab", "query_type": "description_no_name", "query_text": "An apple tree has velvety dark green to black spots scattered across its leaves, and the fruit shows rough, corky, dark patches on the skin."},
+    {"query_id": "D2-Q5", "target_disease": "apple scab", "query_type": "management", "query_text": "how to control a fungal apple disease that causes dark scabby lesions on leaves and fruit, worse in wet spring weather"},
+    {"query_id": "D2-Q6", "target_disease": "apple scab", "query_type": "vlm_caption", "query_text": null, "source_image_class": "Apple___Apple_scab"},
+
+    {"query_id": "D3-Q1", "target_disease": "black rot", "query_type": "disease_name", "query_text": "Black rot"},
+    {"query_id": "D3-Q2", "target_disease": "black rot", "query_type": "symptoms", "query_text": "purple-bordered leaf spots that enlarge into brown or tan lesions in a frogeye pattern, and fruit develops firm brown to black rotten areas often with concentric rings, eventually mummifying"},
+    {"query_id": "D3-Q3", "target_disease": "black rot", "query_type": "species_symptoms", "query_text": "apple tree with frogeye-pattern leaf spots and fruit turning black and shriveled"},
+    {"query_id": "D3-Q4", "target_disease": "black rot", "query_type": "description_no_name", "query_text": "An apple tree shows circular brown leaf spots with purple margins, and some fruit on the tree has turned black, shrunken, and mummified."},
+    {"query_id": "D3-Q5", "target_disease": "black rot", "query_type": "management", "query_text": "how to manage an apple fungal disease that causes frogeye leaf spots and black mummified fruit, often starting from cankers on dead wood"},
+    {"query_id": "D3-Q6", "target_disease": "black rot", "query_type": "vlm_caption", "query_text": null, "source_image_class": "Apple___Black_rot"},
+
+    {"query_id": "D4-Q1", "target_disease": "powdery mildew", "query_type": "disease_name", "query_text": "Powdery mildew"},
+    {"query_id": "D4-Q2", "target_disease": "powdery mildew", "query_type": "symptoms", "query_text": "white to grayish powdery fungal growth coating the surface of leaves, shoots, and sometimes fruit; affected leaves may curl, distort, or become stunted"},
+    {"query_id": "D4-Q3", "target_disease": "powdery mildew", "query_type": "species_symptoms", "query_text": "cherry tree leaves covered in a white powdery coating with some curling and distortion"},
+    {"query_id": "D4-Q4", "target_disease": "powdery mildew", "query_type": "description_no_name", "query_text": "A tree's leaves and young shoots are dusted with a white, flour-like powdery coating, and some leaves appear curled or stunted."},
+    {"query_id": "D4-Q5", "target_disease": "powdery mildew", "query_type": "management", "query_text": "how to treat a fungal disease that coats leaves in a white powdery film and thrives in warm, dry conditions with high humidity"},
+    {"query_id": "D4-Q6", "target_disease": "powdery mildew", "query_type": "vlm_caption", "query_text": null, "source_image_class": "Cherry_(including_sour)___Powdery_mildew"},
+
+    {"query_id": "D5-Q1", "target_disease": "septoria leaf spot", "query_type": "disease_name", "query_text": "Septoria leaf spot"},
+    {"query_id": "D5-Q2", "target_disease": "septoria leaf spot", "query_type": "symptoms", "query_text": "small circular spots with dark brown margins and tan or gray centers on lower leaves first, often with tiny black specks visible in the center of each spot; severe infection causes yellowing and leaf drop"},
+    {"query_id": "D5-Q3", "target_disease": "septoria leaf spot", "query_type": "species_symptoms", "query_text": "tomato plant with small tan-centered, brown-bordered spots on the lower leaves"},
+    {"query_id": "D5-Q4", "target_disease": "septoria leaf spot", "query_type": "description_no_name", "query_text": "A tomato plant's lower leaves have numerous small circular spots with dark edges and pale centers, and the leaves are starting to yellow and fall off."},
+    {"query_id": "D5-Q5", "target_disease": "septoria leaf spot", "query_type": "management", "query_text": "how to manage a fungal tomato disease that causes small brown-bordered spots with tan centers on lower leaves, spread by water splash"},
+    {"query_id": "D5-Q6", "target_disease": "septoria leaf spot", "query_type": "vlm_caption", "query_text": null, "source_image_class": "Tomato___Septoria_leaf_spot"},
+
+    {"query_id": "D6-Q1", "target_disease": "early blight", "query_type": "disease_name", "query_text": "Early blight"},
+    {"query_id": "D6-Q2", "target_disease": "early blight", "query_type": "symptoms", "query_text": "dark brown to black spots with concentric rings forming a target-like or bullseye pattern, usually starting on older lower leaves, often surrounded by a yellow halo"},
+    {"query_id": "D6-Q3", "target_disease": "early blight", "query_type": "species_symptoms", "query_text": "potato plant with bullseye-patterned brown spots on the older lower leaves"},
+    {"query_id": "D6-Q4", "target_disease": "early blight", "query_type": "description_no_name", "query_text": "A potato plant's older leaves show dark brown spots with a distinct target-like ring pattern, and yellowing tissue surrounds each spot."},
+    {"query_id": "D6-Q5", "target_disease": "early blight", "query_type": "management", "query_text": "how to control a fungal potato or tomato disease that causes concentric ring target spot lesions on lower leaves"},
+    {"query_id": "D6-Q6", "target_disease": "early blight", "query_type": "vlm_caption", "query_text": null, "source_image_class": "Potato___Early_blight"},
+
+    {"query_id": "D7-Q1", "target_disease": "bacterial leaf spot", "query_type": "disease_name", "query_text": "Bacterial spot"},
+    {"query_id": "D7-Q2", "target_disease": "bacterial leaf spot", "query_type": "symptoms", "query_text": "small, angular, water-soaked spots on leaves that turn dark brown to purplish-black, often with a yellow halo; spots may fall out leaving a shot-hole appearance; on fruit, spots become sunken and cracked"},
+    {"query_id": "D7-Q3", "target_disease": "bacterial leaf spot", "query_type": "species_symptoms", "query_text": "peach tree with small dark angular leaf spots and a shot-hole appearance, and sunken cracked spots on the fruit"},
+    {"query_id": "D7-Q4", "target_disease": "bacterial leaf spot", "query_type": "description_no_name", "query_text": "A fruit tree has small dark, angular spots on its leaves, some of which have fallen out leaving small holes, and the fruit has sunken, cracked blemishes."},
+    {"query_id": "D7-Q5", "target_disease": "bacterial leaf spot", "query_type": "management", "query_text": "how to manage a bacterial disease of stone fruit trees causing small angular leaf spots that fall out leaving shot-holes, and sunken cracked fruit lesions"},
+    {"query_id": "D7-Q6", "target_disease": "bacterial leaf spot", "query_type": "vlm_caption", "query_text": null, "source_image_class": "Peach___Bacterial_spot"},
+
+    {"query_id": "D8-Q1", "target_disease": "fire blight", "query_type": "disease_name", "query_text": "Fire blight"},
+    {"query_id": "D8-Q2", "target_disease": "fire blight", "query_type": "symptoms", "query_text": "shoots and blossoms suddenly wilt, blacken, and die as if scorched by fire; the tips of infected branches often curl into a distinctive shepherd's crook shape; cankers with amber-colored bacterial ooze may appear on branches"},
+    {"query_id": "D8-Q3", "target_disease": "fire blight", "query_type": "species_symptoms", "query_text": "apple or pear tree with blackened, scorched-looking shoots that curl over at the tip like a shepherd's crook"},
+    {"query_id": "D8-Q4", "target_disease": "fire blight", "query_type": "description_no_name", "query_text": "Branch tips on a fruit tree appear scorched and blackened as if burned, curling downward into a hook shape, with the blight spreading rapidly along the branch."},
+    {"query_id": "D8-Q5", "target_disease": "fire blight", "query_type": "management", "query_text": "how to manage a bacterial disease of apple and pear trees causing scorched blackened shoots that curl into a hook shape, spread by insects and rain during bloom"}
+  ]
+}
