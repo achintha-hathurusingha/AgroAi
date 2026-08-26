@@ -110,19 +110,21 @@ implementation detail:
    BGE still wins overall (R@3=0.596, R@5=0.617, R@10=0.702, R@20=0.787, MRR=0.526, all
    best of the three) but **ties sentence-transformers exactly at R@1 (0.426 each)** at
    full scale — the original "clearly wins" framing overstated the margin.
-2. ~~Exact retrieval query construction~~ — **decided for Phase 1: Prompt C's format**
-   (structured, `Species: unknown` + free-form bulleted symptom list — not a rigid
-   fill-in-the-blank feature checklist, not an unconstrained open-ended description, not
-   a bare candidate-disease guess). See [phase1b-q2-isolation-results.md](phase1b-q2-isolation-results.md)
-   and [phase1b-q2-diagnostic-feature-validation.md](phase1b-q2-diagnostic-feature-validation.md).
-   Evidence is C > A (28.6% vs 0% R@1) and C > E (a more rigid diagnostic-feature-checklist
-   variant that suppressed descriptive content and regressed a previously-solved control
-   case from rank 1 to rank 7) — **not** evidence that C is globally optimal, only that
-   it's the best of what was tested. Known remaining limitation, not solved: even Prompt C
-   sometimes misses a disease's specific discriminative feature (e.g. cedar apple rust's
-   orange tube structures, early blight's concentric rings), which no query-construction
-   fix can compensate for if the VLM's visual description never captures it in the first
-   place. Decision closed for now — not being iterated on further in Phase 1B.
+2. **Exact retrieval query construction — REOPENED.** Was recorded as "decided: Prompt
+   C" based on the small 400-fact-pool isolation experiment (C: 28.6% R@1 vs A: 0%). A
+   Milestone 3 control failure prompted re-testing at full 17,583-fact scale (same
+   Prompt-A/B/C/D/E texts, no new generation, BGE-micro-v2 fixed) — see
+   [phase1b5-q2-fullscale-results.md](phase1b5-q2-fullscale-results.md). **Result: at
+   full scale, every variant scores 0% R@1 through R@5, and no variant wins consistently
+   across diseases** — A wins for powdery mildew (the exact case C had "solved" at rank 1
+   in the small pool), D wins for apple scab and black rot, C wins for septoria and
+   bacterial spot, nothing gets cedar apple rust or early blight close to usable. The
+   original Prompt C conclusion does not hold and should not be relied on. Current best
+   read: the bottleneck isn't query *phrasing* — it's that Qwen3-VL's descriptions rarely
+   contain the specific feature that would distinguish the true disease from thousands of
+   textually-similar alternatives in the full corpus, and no reformatting of the same
+   generic visual content ("brown spots," "irregular margin") fixes that. Genuinely open
+   again — not blocking Q3/Q4 discussion, but not something to build on as settled either.
 3. **Reranking method** for ablation arm 5 — a cross-encoder, an LLM-as-reranker prompt,
    or something else.
 4. **Ground-truth source per experiment** — PlantVillage folder labels give species +
