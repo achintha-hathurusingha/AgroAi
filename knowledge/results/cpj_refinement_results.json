@@ -1,0 +1,78 @@
+{
+  "D1_cedar_apple_rust": {
+    "target_disease": "cedar apple rust",
+    "history": [
+      {
+        "iteration": 0,
+        "caption": "Species: unknown\nVisible symptoms:\n- Leaf is green with brownish-red spots\n- Spots are scattered across the leaf surface\n- Leaf margin appears slightly irregular or toothed\n- Leaf vein structure is visible\n- Leaf is attached to a short petiole\n- Background is uniform gray",
+        "judge_score": 8.0,
+        "judge_feedback": "The description does not mention the reddish-brown coloration of the leaf's veins or the presence of small, scattered necrotic spots that appear to be clustered near the leaf's midrib, which could be important for disease identification."
+      }
+    ],
+    "initial_caption": "Species: unknown\nVisible symptoms:\n- Leaf is green with brownish-red spots\n- Spots are scattered across the leaf surface\n- Leaf margin appears slightly irregular or toothed\n- Leaf vein structure is visible\n- Leaf is attached to a short petiole\n- Background is uniform gray",
+    "final_caption": "Species: unknown\nVisible symptoms:\n- Leaf is green with brownish-red spots\n- Spots are scattered across the leaf surface\n- Leaf margin appears slightly irregular or toothed\n- Leaf vein structure is visible\n- Leaf is attached to a short petiole\n- Background is uniform gray",
+    "rank_initial": 2165,
+    "rank_final": 2165,
+    "n_refinements": 0
+  },
+  "D6_early_blight": {
+    "target_disease": "early blight",
+    "history": [
+      {
+        "iteration": 0,
+        "caption": "Species: unknown\nVisible symptoms:\n- Leaf is green with dark brown to black spots scattered across surface\n- Some spots are clustered, others are isolated\n- Leaf margin appears slightly curled or irregular\n- Leaf has visible central vein and smaller branching veins\n- Leaf tip is slightly curled or notched\n- Leaf surface appears somewhat rough or textured\n- Some areas of leaf tissue appear necrotic or discolored\n- Leaf is slightly wilted or curled at edges",
+        "judge_score": 7.0,
+        "judge_feedback": "The description does not mention the presence of dark brown to black spots that appear to be necrotic lesions, possibly fungal or bacterial in origin, which are a key diagnostic feature visible in the image."
+      },
+      {
+        "iteration": 1,
+        "caption": "Species: unknown\nVisible symptoms:\n- Numerous dark brown to black necrotic lesions are scattered across the leaf surface, primarily concentrated along the midrib and extending toward the leaf margins.\n- Lesions appear as irregular, slightly sunken spots with well-defined edges, some coalescing into larger patches, suggesting progressive tissue death.\n- Leaf tissue surrounding the lesions shows slight yellowing and browning, indicating chlorosis and necrosis progressing outward from the lesions.\n- The overall leaf surface is somewhat wrinkled and appears desiccated, with some areas of the margin curled inward, possibly due to tissue loss or environmental stress.\n- No visible fungal sporulation, oozing, or pustules are present, but the pattern and coloration strongly",
+        "judge_score": 8.0,
+        "judge_feedback": "The description does not mention the presence of small, dark spots that appear to be pycnidia or other fungal structures (if any) that might be visible upon closer inspection of the lesions, nor does it note the overall green background of the leaf which contrasts with the necrotic areas."
+      }
+    ],
+    "initial_caption": "Species: unknown\nVisible symptoms:\n- Leaf is green with dark brown to black spots scattered across surface\n- Some spots are clustered, others are isolated\n- Leaf margin appears slightly curled or irregular\n- Leaf has visible central vein and smaller branching veins\n- Leaf tip is slightly curled or notched\n- Leaf surface appears somewhat rough or textured\n- Some areas of leaf tissue appear necrotic or discolored\n- Leaf is slightly wilted or curled at edges",
+    "final_caption": "Species: unknown\nVisible symptoms:\n- Numerous dark brown to black necrotic lesions are scattered across the leaf surface, primarily concentrated along the midrib and extending toward the leaf margins.\n- Lesions appear as irregular, slightly sunken spots with well-defined edges, some coalescing into larger patches, suggesting progressive tissue death.\n- Leaf tissue surrounding the lesions shows slight yellowing and browning, indicating chlorosis and necrosis progressing outward from the lesions.\n- The overall leaf surface is somewhat wrinkled and appears desiccated, with some areas of the margin curled inward, possibly due to tissue loss or environmental stress.\n- No visible fungal sporulation, oozing, or pustules are present, but the pattern and coloration strongly",
+    "rank_initial": 267,
+    "rank_final": 100,
+    "n_refinements": 1
+  },
+  "D7_bacterial_leaf_spot": {
+    "target_disease": "bacterial leaf spot",
+    "history": [
+      {
+        "iteration": 0,
+        "caption": "Species: unknown\nVisible symptoms:\n- elongated leaf with wavy margins\n- green coloration with some brown spots\n- surface appears slightly textured or puckered\n- tip of leaf is tapered and curled upward",
+        "judge_score": 8.0,
+        "judge_feedback": "The description does not mention the presence of small, scattered brown spots that appear to be necrotic lesions or spots, which are visible in the image and may be diagnostically significant."
+      }
+    ],
+    "initial_caption": "Species: unknown\nVisible symptoms:\n- elongated leaf with wavy margins\n- green coloration with some brown spots\n- surface appears slightly textured or puckered\n- tip of leaf is tapered and curled upward",
+    "final_caption": "Species: unknown\nVisible symptoms:\n- elongated leaf with wavy margins\n- green coloration with some brown spots\n- surface appears slightly textured or puckered\n- tip of leaf is tapered and curled upward",
+    "rank_initial": 26,
+    "rank_final": 26,
+    "n_refinements": 0
+  },
+  "D4_powdery_mildew": {
+    "target_disease": "powdery mildew",
+    "history": [
+      {
+        "iteration": 0,
+        "caption": "Species: unknown\nVisible symptoms:\n- Leaf is ovate with a pointed apex and a slightly cordate base\n- Surface shows mottled, irregular green and lighter green areas\n- Veins are visible and appear slightly raised\n- Margins show slight curling or irregularity\n- Small dark spot near the base of the petiole\n- Overall texture appears slightly wrinkled or puckered",
+        "judge_score": 7.0,
+        "judge_feedback": "The description does not mention the presence of dark, necrotic or chlorotic blotches along the midrib or the overall mottled appearance that suggests possible viral infection (e.g., \"mosaic\" or \"stippling\" patterns), which are highly diagnostic and visible in the image."
+      },
+      {
+        "iteration": 1,
+        "caption": "Species: unknown\nVisible symptoms:\n- Dark, necrotic or chlorotic blotches are concentrated along the central midrib, appearing as irregular, discolored patches that disrupt the leaf\u2019s uniform green.\n- The leaf surface displays a mottled or stippled appearance, with areas of lighter and darker green forming a patchy, mosaic-like pattern across the blade.\n- The midrib itself is visibly darker and more necrotic compared to surrounding tissue, suggesting localized tissue death or chlorosis along the vascular structure.\n- Overall leaf coloration is uneven, with green areas interspersed with yellowish or brownish necrotic zones, indicating possible viral infection or stress-related chlorosis.",
+        "judge_score": 8.0,
+        "judge_feedback": "The description does not mention the visible yellowish or brownish necrotic zones at the leaf tip or the small yellowish structure (likely a petiole remnant or gall) at the base of the leaf, which are notable visual details in the image."
+      }
+    ],
+    "initial_caption": "Species: unknown\nVisible symptoms:\n- Leaf is ovate with a pointed apex and a slightly cordate base\n- Surface shows mottled, irregular green and lighter green areas\n- Veins are visible and appear slightly raised\n- Margins show slight curling or irregularity\n- Small dark spot near the base of the petiole\n- Overall texture appears slightly wrinkled or puckered",
+    "final_caption": "Species: unknown\nVisible symptoms:\n- Dark, necrotic or chlorotic blotches are concentrated along the central midrib, appearing as irregular, discolored patches that disrupt the leaf\u2019s uniform green.\n- The leaf surface displays a mottled or stippled appearance, with areas of lighter and darker green forming a patchy, mosaic-like pattern across the blade.\n- The midrib itself is visibly darker and more necrotic compared to surrounding tissue, suggesting localized tissue death or chlorosis along the vascular structure.\n- Overall leaf coloration is uneven, with green areas interspersed with yellowish or brownish necrotic zones, indicating possible viral infection or stress-related chlorosis.",
+    "rank_initial": 80,
+    "rank_final": 34,
+    "n_refinements": 1
+  }
+}
