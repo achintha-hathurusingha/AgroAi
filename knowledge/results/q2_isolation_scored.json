@@ -1,0 +1,170 @@
+[
+  {
+    "query_id": "D1",
+    "target_disease": "cedar apple rust",
+    "variant": "prompt_b_text",
+    "first_relevant_rank": null,
+    "top1_disease": "iron chlorosis",
+    "top1_sim": 0.7280291318893433
+  },
+  {
+    "query_id": "D1",
+    "target_disease": "cedar apple rust",
+    "variant": "prompt_c_text",
+    "first_relevant_rank": null,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.8291663527488708
+  },
+  {
+    "query_id": "D1",
+    "target_disease": "cedar apple rust",
+    "variant": "prompt_d_text",
+    "first_relevant_rank": null,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.8026127219200134
+  },
+  {
+    "query_id": "D2",
+    "target_disease": "apple scab",
+    "variant": "prompt_b_text",
+    "first_relevant_rank": null,
+    "top1_disease": "iron chlorosis",
+    "top1_sim": 0.7628339529037476
+  },
+  {
+    "query_id": "D2",
+    "target_disease": "apple scab",
+    "variant": "prompt_c_text",
+    "first_relevant_rank": null,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.8401509523391724
+  },
+  {
+    "query_id": "D2",
+    "target_disease": "apple scab",
+    "variant": "prompt_d_text",
+    "first_relevant_rank": 7,
+    "top1_disease": "possibly flowering brown rot disease or bacterial canker",
+    "top1_sim": 0.7996519804000854
+  },
+  {
+    "query_id": "D3",
+    "target_disease": "black rot",
+    "variant": "prompt_b_text",
+    "first_relevant_rank": null,
+    "top1_disease": "iron chlorosis",
+    "top1_sim": 0.720160186290741
+  },
+  {
+    "query_id": "D3",
+    "target_disease": "black rot",
+    "variant": "prompt_c_text",
+    "first_relevant_rank": 7,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.7872576713562012
+  },
+  {
+    "query_id": "D3",
+    "target_disease": "black rot",
+    "variant": "prompt_d_text",
+    "first_relevant_rank": 1,
+    "top1_disease": "black rot",
+    "top1_sim": 0.7802743315696716
+  },
+  {
+    "query_id": "D4",
+    "target_disease": "powdery mildew",
+    "variant": "prompt_b_text",
+    "first_relevant_rank": 2,
+    "top1_disease": "iron chlorosis",
+    "top1_sim": 0.7405605316162109
+  },
+  {
+    "query_id": "D4",
+    "target_disease": "powdery mildew",
+    "variant": "prompt_c_text",
+    "first_relevant_rank": 1,
+    "top1_disease": "powdery mildew",
+    "top1_sim": 0.7636919617652893
+  },
+  {
+    "query_id": "D4",
+    "target_disease": "powdery mildew",
+    "variant": "prompt_d_text",
+    "first_relevant_rank": 2,
+    "top1_disease": "iron chlorosis",
+    "top1_sim": 0.7835838198661804
+  },
+  {
+    "query_id": "D5",
+    "target_disease": "septoria leaf spot",
+    "variant": "prompt_b_text",
+    "first_relevant_rank": 4,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.7516844868659973
+  },
+  {
+    "query_id": "D5",
+    "target_disease": "septoria leaf spot",
+    "variant": "prompt_c_text",
+    "first_relevant_rank": 3,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.8240874409675598
+  },
+  {
+    "query_id": "D5",
+    "target_disease": "septoria leaf spot",
+    "variant": "prompt_d_text",
+    "first_relevant_rank": 3,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.802240788936615
+  },
+  {
+    "query_id": "D6",
+    "target_disease": "early blight",
+    "variant": "prompt_b_text",
+    "first_relevant_rank": 10,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.7725400924682617
+  },
+  {
+    "query_id": "D6",
+    "target_disease": "early blight",
+    "variant": "prompt_c_text",
+    "first_relevant_rank": 12,
+    "top1_disease": "septoria leaf spot",
+    "top1_sim": 0.8152743577957153
+  },
+  {
+    "query_id": "D6",
+    "target_disease": "early blight",
+    "variant": "prompt_d_text",
+    "first_relevant_rank": 7,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.8488589525222778
+  },
+  {
+    "query_id": "D7",
+    "target_disease": "bacterial leaf spot",
+    "variant": "prompt_b_text",
+    "first_relevant_rank": 1,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.7718380689620972
+  },
+  {
+    "query_id": "D7",
+    "target_disease": "bacterial leaf spot",
+    "variant": "prompt_c_text",
+    "first_relevant_rank": 1,
+    "top1_disease": "bacterial leaf spot",
+    "top1_sim": 0.7975796461105347
+  },
+  {
+    "query_id": "D7",
+    "target_disease": "bacterial leaf spot",
+    "variant": "prompt_d_text",
+    "first_relevant_rank": 15,
+    "top1_disease": "oak shothole leafminer damage, heat/drought stress, possibly planted too deeply",
+    "top1_sim": 0.780299961566925
+  }
+]
