@@ -1,11 +1,12 @@
-# Phase 2 Evaluation Protocol (frozen, pending one confirmation)
+# Phase 2 Evaluation Protocol (FROZEN)
 
 Written to close Phase 1 per the final checklist: freeze corpus, audit leakage, freeze
-evaluation protocol. This document is the frozen protocol for the main VLM-vs-RAG
-ablation — one sub-decision (ground-truth source) is proposed but flagged for your
-confirmation rather than locked in unilaterally, since it was explicitly listed as an
-open item ([phase-1-plan.md](phase-1-plan.md) open question 4) and not something already
-decided by prior experiments the way the corpus freeze or leakage audit are pure checks.
+evaluation protocol. This is the frozen protocol for the main VLM-vs-RAG ablation. All
+sub-decisions, including ground-truth source (Q4), are now confirmed and closed — see
+below and [phase-1-plan.md](phase-1-plan.md). Updated after Phase 2 research
+([phase2-research-findings.md](phase2-research-findings.md)) to incorporate graduated
+diagnostic scoring and the full RAG evaluation dimensions (faithfulness, groundedness,
+context relevance) rather than a single ad-hoc "supported: yes/no" judgment.
 
 ## Ablation arms (unchanged from the original scope)
 
@@ -25,7 +26,28 @@ needs to be measured on its own rather than assumed.
 ## Primary metric
 
 **Disease identification accuracy**: correct disease predictions / total cases, compared
-across the five arms above.
+across the five arms above. Stays primary — graduated scoring (below) is secondary
+analysis, not a replacement, so the headline number stays simple and comparable.
+
+$$
+\text{Accuracy} = \frac{\text{correct disease predictions}}{\text{evaluated cases}}
+$$
+
+## Graduated diagnostic scoring (secondary analysis)
+
+Binary correct/incorrect treats every wrong answer as equally wrong, which loses
+information a real evaluation should keep — "predicted a different fungal leaf-spot
+disease" and "predicted a nutrient deficiency" are very different failure modes for the
+same wrong-disease outcome. Adopted from medical LLM-as-judge methodology
+([phase2-research-findings.md](phase2-research-findings.md)):
+
+| Tier | Meaning |
+|---|---|
+| Exact match | Correct disease |
+| Clinically relevant differential | Wrong exact disease but diagnostically relevant/closely related (same pathogen family, overlapping symptom presentation, etc.) |
+| Complete miss | Incorrect and not diagnostically useful |
+
+Reported alongside, not instead of, primary accuracy.
 
 ## Retrieval metrics (evaluates the retrieval component independently of final diagnosis)
 
@@ -38,12 +60,46 @@ from it, and the VLM can diagnose correctly without the retrieved evidence conta
 exact matching disease fact. Both cases get recorded distinctly, not collapsed into one
 pass/fail number.
 
+## RAG-quality dimensions (a correct diagnosis does not imply good RAG)
+
+A correct final diagnosis and good retrieval-augmented reasoning are not the same
+achievement — the model can land on the right disease with irrelevant retrieved evidence,
+or produce the wrong diagnosis despite well-retrieved evidence. Following the RAG
+Triad/RAGAS framework ([phase2-research-findings.md](phase2-research-findings.md)):
+
+- **Context relevance**: is what was retrieved actually relevant to the query/image?
+- **Faithfulness**: decompose the generated diagnosis into atomic claims, classify each
+  against the retrieved context as entailed / neutral / contradicted; report as the
+  proportion of entailed claims. This replaces a single ad-hoc "is it supported: yes/no"
+  judgment with something closer to auditable, per-claim scoring.
+- **Groundedness**: does the final diagnosis, taken as a whole, actually follow from the
+  retrieved evidence — the aggregate judgment faithfulness's claim-level scores feed into.
+
+Reference thresholds from industry practice (not adopted blindly, but useful calibration
+points): groundedness < 0.80 typically flagged for review, faithfulness < 0.70 typically
+treated as a blocking failure.
+
 ## Reliability metrics
 
 - Hallucinated disease/species claims (unsupported by the image or retrieved evidence)
-- Groundedness / evidence-support: does the final diagnosis actually follow from what was retrieved?
-- Confidence calibration, where the system reports a confidence score
+- Confidence calibration: **Expected Calibration Error (ECE)** — average gap between
+  stated confidence and observed accuracy across confidence bins, where the system reports
+  a confidence score
 - Abstention/uncertainty handling, where applicable
+
+## Query-generation mechanism: Prompt C only — CPJ refinement is exploratory, not baseline
+
+Per [phase2-cpj-refinement-results.md](phase2-cpj-refinement-results.md): a CPJ-style
+judge-and-refine loop showed real benefit where it triggered (2.4–2.7x rank improvement
+on 2 of 4 tested cases), but the self-judging threshold gate proved unreliable — it let
+the single hardest case in the project through unrefined despite the judge's own written
+feedback naming the missing detail, and even the successful refinements landed well short
+of a usable rank. **Decision: Phase 2's baseline query generation is plain Prompt C,
+single-shot, no refinement loop.** CPJ-style refinement is documented as a validated-but-
+unreliable exploratory mitigation, not adopted into the baseline — worth revisiting only
+if Phase 2 results show retrieval-query quality is clearly the limiting factor on RAG's
+overall benefit, at which point it becomes a targeted follow-up experiment (starting with
+fixing the judge-gating logic, not another prompt variant).
 
 ## Ground-truth source — FROZEN
 
