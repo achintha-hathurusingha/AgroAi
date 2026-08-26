@@ -1,0 +1,29 @@
+{
+  "version": "agmmu_phase2_v1",
+  "frozen_at": "2026-08-26T22:23:32.875994",
+  "source": "agmmu_ft_hf1.json (45,096 raw entries)",
+  "files": {
+    "diagnostic_corpus": {
+      "path": "frozen/agmmu_phase2_diagnostic_v1.json",
+      "count": 17583,
+      "sha256": "ae435393ac006cad5293fdcb5185e2af090606d280d1c659b7c933faee3d1c48"
+    },
+    "context_corpus": {
+      "path": "frozen/agmmu_phase2_context_v1.json",
+      "count": 17924,
+      "sha256": "fbaeb690eb37b2dd1d7bd02c22d2b9b49b2143295b424fefe37ec95b27e964e5"
+    },
+    "diagnostic_bge_embeddings": {
+      "path": "frozen/agmmu_phase2_diagnostic_v1_bge_emb.npy",
+      "shape": [
+        17583,
+        384
+      ],
+      "sha256": "dd9bf390c0a3bf49bf40d8c612689f4c0f592f97d31e53914a3179bb683f940a"
+    }
+  },
+  "embedding_model": "TaylorAI/bge-micro-v2",
+  "total_raw_entries": 45096,
+  "total_normalized_facts": 45098,
+  "total_deduped_facts": 35507
+}

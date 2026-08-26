@@ -123,14 +123,25 @@ implementation detail:
    read: the bottleneck isn't query *phrasing* — it's that Qwen3-VL's descriptions rarely
    contain the specific feature that would distinguish the true disease from thousands of
    textually-similar alternatives in the full corpus, and no reformatting of the same
-   generic visual content ("brown spots," "irregular margin") fixes that. Genuinely open
-   again — not blocking Q3/Q4 discussion, but not something to build on as settled either.
-3. **Reranking method** for ablation arm 5 — a cross-encoder, an LLM-as-reranker prompt,
-   or something else.
-4. **Ground-truth source per experiment** — PlantVillage folder labels give species +
-   disease-vs-healthy for free; AgMMU's 770-entry eval set gives MCQ-format ground truth
-   with richer background context. Decide which drives the headline accuracy numbers, or
-   how to combine both.
+   generic visual content ("brown spots," "irregular margin") fixes that. A follow-up
+   bottleneck diagnosis ([phase1b5-bottleneck-diagnosis-results.md](phase1b5-bottleneck-diagnosis-results.md))
+   found the corpus/embedding representation itself is capable (hand-authored queries hit
+   rank 1-3), so the gap is specifically what Qwen's description contains — and species
+   context turned out to be a double-edged signal (40x better for some diseases, 6x worse
+   for others), not a simple fix. **Closed for Phase 1 as: Prompt C kept as the practical
+   baseline query strategy, explicitly documented as unvalidated-as-optimal rather than
+   proven best** — no tested strategy (A-E) is a robust winner at full scale, and that
+   itself is the finding, not a gap still being chased.
+3. ~~Reranking method~~ — **decided: deferred to Phase 2, not part of the Phase 1
+   baseline.** See [phase2-evaluation-protocol.md](phase2-evaluation-protocol.md). Ablation
+   arms 1-4 run without a reranker; arm 5 (structured knowledge + reranking) is where
+   reranking gets evaluated on its own merits in Phase 2 — not assumed to help, given the
+   bottleneck diagnosis showing correct facts sometimes rank thousands of positions down,
+   which a reranker over a limited candidate set can't rescue by construction.
+4. **Ground-truth source per experiment** — proposed in [phase2-evaluation-protocol.md](phase2-evaluation-protocol.md)
+   (PlantVillage labels primary, AgMMU's 770-entry eval set secondary) but flagged there
+   as a proposal needing your confirmation, not a freeze — this is a real design choice,
+   unlike the corpus freeze and leakage audit in the same document, which are checks.
 5. ~~Preprocessing of the 45,096 facts~~ — **decided**, see
    [phase1a-preprocessing-decisions.md](phase1a-preprocessing-decisions.md): split into a
    ~17,760-entry diagnostic corpus and a ~27,336-entry context corpus (kept, not deleted,
