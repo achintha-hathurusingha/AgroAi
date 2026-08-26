@@ -129,11 +129,14 @@ implementation detail:
    so retrieval-population choice stays a separate later experiment); dedupe the
    retrieval corpus while preserving `source_faq_ids` traceability; normalize (not
    exclude) the 3 dict-shaped multi-species answers; keep `species_raw` unnormalized.
-6. **FAISS vs Qdrant vs plain numpy** — the finalized architecture names Qdrant, but at
-   45K facts even brute-force cosine similarity in numpy runs in well under a second.
-   Worth deciding whether Qdrant is worth standing up for Phase 1 or whether that's
-   premature infrastructure — your call, since the diagram names it but the reasoning for
-   *why* over the simpler options wasn't spelled out yet.
+6. ~~FAISS vs Qdrant vs plain numpy~~ — **decided: NumPy exact cosine.** See
+   [phase1-q6-vector-store-results.md](phase1-q6-vector-store-results.md): a real
+   benchmark (standalone Qdrant binary as a genuine server, no Docker/root needed) showed
+   NumPy fastest on every measure at both 17,583- and 35,507-fact scale — build ~0ms vs
+   FAISS's 13–28ms vs Qdrant's 4.5–8.8s; query mean 0.343–0.390ms vs FAISS's 0.7–2.1ms vs
+   Qdrant's 2.9–3.6ms. FAISS/Qdrant remain viable future swaps if corpus size grows much
+   larger, or if persistence across restarts / metadata filtering / multi-process shared
+   access becomes an actual requirement — not needed for Phase 1's single-process pipeline.
 
 ## Concepts worth understanding before/while building this
 
