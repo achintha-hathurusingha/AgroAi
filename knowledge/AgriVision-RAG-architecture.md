@@ -224,10 +224,17 @@ original five.)*
   (untested — no root action has been needed there yet).
 - On `devon`: models cached under `~/.cache/huggingface` (SigLIP, Qwen3-VL-8B-Instruct —
   22GB+), datasets under `~/agrivision-rag/data/` (PlantVillage color split extracted,
-  923MB; AgMMU JSON+eval-images in progress), source repos cloned under
-  `~/agrivision-rag/repos/` (AgMMU, AppleGrowthVision, banana-defect-segmentation).
+  923MB, 38 classes/54,305 images; AgMMU JSON facts + eval images extracted, 17GB, 770
+  entries), source repos cloned under `~/agrivision-rag/repos/` (AgMMU, AppleGrowthVision,
+  banana-defect-segmentation).
   Skip AgMMU's `images_ft.tar.gz` (~500GB fine-tuning image corpus, split into 11 parts) —
   not needed for RAG retrieval, only the JSON facts + smaller `images.tar.gz` (17GB) are.
+  `agmmu_ft_hf1.json` (45,096 entries) is the real knowledge-base content: per-entry
+  species / disease-identification / symptom-description / management-instructions facts
+  — exactly what the RAG retrieval corpus should be built from, and it's usable as pure
+  text without needing the paired images. **Path note:** the JSON's `images` field points
+  at `./images/<id>/...`, but the actual extracted folder is `copied_images/<id>/...` —
+  remap this when writing data-loading code.
 - First real-data pipeline test (`test_real_pipeline.py`) on a genuine PlantVillage image:
   ground truth `Apple___Cedar_apple_rust`; Qwen3-VL zero-shot got species (*Malus
   domestica*) and disease-vs-healthy right, but guessed the wrong specific disease (Apple
