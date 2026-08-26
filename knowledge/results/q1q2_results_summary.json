@@ -1,0 +1,156 @@
+{
+  "overall": {
+    "sentence-transformers": {
+      "recall@1": 0.574468085106383,
+      "recall@3": 0.7021276595744681,
+      "recall@5": 0.7446808510638298,
+      "mrr": 0.6631488192658406
+    },
+    "bge-micro-v2": {
+      "recall@1": 0.6808510638297872,
+      "recall@3": 0.8085106382978723,
+      "recall@5": 0.8297872340425532,
+      "mrr": 0.7511047463175122
+    },
+    "siglip-text": {
+      "recall@1": 0.5319148936170213,
+      "recall@3": 0.723404255319149,
+      "recall@5": 0.7872340425531915,
+      "mrr": 0.6477971201375456
+    }
+  },
+  "by_query_type": {
+    "sentence-transformers": {
+      "disease_name": {
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "n": 8
+      },
+      "symptoms": {
+        "recall@1": 0.625,
+        "recall@3": 0.625,
+        "recall@5": 0.75,
+        "mrr": 0.6640625,
+        "n": 8
+      },
+      "species_symptoms": {
+        "recall@1": 0.5,
+        "recall@3": 0.875,
+        "recall@5": 0.875,
+        "mrr": 0.6805555555555556,
+        "n": 8
+      },
+      "description_no_name": {
+        "recall@1": 0.625,
+        "recall@3": 0.875,
+        "recall@5": 0.875,
+        "mrr": 0.7625,
+        "n": 8
+      },
+      "management": {
+        "recall@1": 0.625,
+        "recall@3": 0.75,
+        "recall@5": 0.875,
+        "mrr": 0.7366071428571429,
+        "n": 8
+      },
+      "vlm_caption": {
+        "recall@1": 0.0,
+        "recall@3": 0.0,
+        "recall@5": 0.0,
+        "mrr": 0.05974184545613116,
+        "n": 7
+      }
+    },
+    "bge-micro-v2": {
+      "disease_name": {
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "n": 8
+      },
+      "symptoms": {
+        "recall@1": 0.75,
+        "recall@3": 0.875,
+        "recall@5": 0.875,
+        "mrr": 0.8125,
+        "n": 8
+      },
+      "species_symptoms": {
+        "recall@1": 0.75,
+        "recall@3": 0.875,
+        "recall@5": 0.875,
+        "mrr": 0.8072916666666666,
+        "n": 8
+      },
+      "description_no_name": {
+        "recall@1": 0.875,
+        "recall@3": 0.875,
+        "recall@5": 0.875,
+        "mrr": 0.8833333333333333,
+        "n": 8
+      },
+      "management": {
+        "recall@1": 0.625,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "mrr": 0.8125,
+        "n": 8
+      },
+      "vlm_caption": {
+        "recall@1": 0.0,
+        "recall@3": 0.14285714285714285,
+        "recall@5": 0.2857142857142857,
+        "mrr": 0.110989010989011,
+        "n": 7
+      }
+    },
+    "siglip-text": {
+      "disease_name": {
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "n": 8
+      },
+      "symptoms": {
+        "recall@1": 0.375,
+        "recall@3": 0.75,
+        "recall@5": 0.875,
+        "mrr": 0.578030303030303,
+        "n": 8
+      },
+      "species_symptoms": {
+        "recall@1": 0.375,
+        "recall@3": 0.75,
+        "recall@5": 0.75,
+        "mrr": 0.5833333333333334,
+        "n": 8
+      },
+      "description_no_name": {
+        "recall@1": 0.625,
+        "recall@3": 0.75,
+        "recall@5": 0.875,
+        "mrr": 0.6979166666666666,
+        "n": 8
+      },
+      "management": {
+        "recall@1": 0.75,
+        "recall@3": 0.875,
+        "recall@5": 0.875,
+        "mrr": 0.8125,
+        "n": 8
+      },
+      "vlm_caption": {
+        "recall@1": 0.0,
+        "recall@3": 0.14285714285714285,
+        "recall@5": 0.2857142857142857,
+        "mrr": 0.15317460317460316,
+        "n": 7
+      }
+    }
+  }
+}
