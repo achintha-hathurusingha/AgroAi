@@ -1,0 +1,46 @@
+{
+  "test_image": "/home/minura/agrivision-rag/data/plantvillage/raw/color/Apple___Cedar_apple_rust/96a1d021-2c27-46a0-9891-41e449e4910e___FREC_C.Rust 3610.JPG",
+  "ground_truth_disease": "cedar apple rust",
+  "query_text": "Species: unknown\nVisible symptoms:\n- Leaf is green with irregular brown spots\n- Some spots appear necrotic or discolored\n- Leaf margin is slightly curled or irregular\n- Veins are visible and appear unaffected\n- Leaf is attached to a short petiole",
+  "top5_results": [
+    {
+      "rank": 1,
+      "fact_id": "fact_018615",
+      "disease": "leaf spot",
+      "species_raw": "marigold",
+      "similarity": 0.8427740931510925
+    },
+    {
+      "rank": 2,
+      "fact_id": "fact_031384",
+      "disease": "phyllosticta leaf spot",
+      "species_raw": "japanese maple",
+      "similarity": 0.8314477205276489
+    },
+    {
+      "rank": 3,
+      "fact_id": "fact_015830",
+      "disease": "impatiens necrotic spot",
+      "species_raw": "primrose",
+      "similarity": 0.8247547149658203
+    },
+    {
+      "rank": 4,
+      "fact_id": "fact_005946",
+      "disease": "leaf spot disease",
+      "species_raw": "tree",
+      "similarity": 0.8229705691337585
+    },
+    {
+      "rank": 5,
+      "fact_id": "fact_014640",
+      "disease": "fungal leaf spots",
+      "species_raw": "laurel",
+      "similarity": 0.8224741816520691
+    }
+  ],
+  "hit_rank": null,
+  "top1": false,
+  "top3": false,
+  "top5": false
+}
