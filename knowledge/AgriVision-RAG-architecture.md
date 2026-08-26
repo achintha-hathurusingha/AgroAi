@@ -209,9 +209,27 @@ original five.)*
 
 ## Infrastructure notes
 
-- GPU dev/test server: `qbits` (192.248.10.67), user `minura`, RTX 4080 SUPER (16GB VRAM),
-  Threadripper 2950X, 125GB RAM, Ubuntu 24.04. SSH key: `Achintha` (kept out of this repo via
+- **Primary GPU server: `devon` (192.248.10.68)**, user `minura`, RTX 4090 (24GB VRAM),
+  Intel i9-14900K, 62GB RAM, Ubuntu 24.04.4, 561GB free disk. This is minura's main dev
+  machine (existing conda envs: `fyp`, `adair`, `pmrf`, etc. — left untouched; work happens
+  in a cloned `agrivision` env). SSH key: `Achintha` (kept out of this repo via
   `.gitignore` — never commit it).
-- `/home` on qbits is at 99% usage (51GB free of 3.6TB) — do **not** default HF_HOME/model
-  caches there. Root partition (`/`) has ~97GB free — better default for model downloads
-  until more storage is sorted out (NFS mount under consideration).
+- `qbits` (192.248.10.67) — a shared multi-user server, RTX 4080 SUPER (16GB), `/home` at
+  99% usage (only ~27-51GB free, shared across ~9 users). Used for initial setup/testing;
+  work has since moved to `devon` for more VRAM and disk headroom. GPU freed there
+  (`~/agrivision-rag/stop.sh`) once no longer in active use, since it's shared.
+  No sudo access on qbits — `mount -t nfs` and the `unshare --map-root-user` unprivileged
+  workaround are both blocked there (no fstab `user` entry, AppArmor restricts unprivileged
+  user namespaces on Ubuntu 24.04). `minura` *does* appear to be a real sudoer on devon
+  (untested — no root action has been needed there yet).
+- On `devon`: models cached under `~/.cache/huggingface` (SigLIP, Qwen3-VL-8B-Instruct —
+  22GB+), datasets under `~/agrivision-rag/data/` (PlantVillage color split extracted,
+  923MB; AgMMU JSON+eval-images in progress), source repos cloned under
+  `~/agrivision-rag/repos/` (AgMMU, AppleGrowthVision, banana-defect-segmentation).
+  Skip AgMMU's `images_ft.tar.gz` (~500GB fine-tuning image corpus, split into 11 parts) —
+  not needed for RAG retrieval, only the JSON facts + smaller `images.tar.gz` (17GB) are.
+- First real-data pipeline test (`test_real_pipeline.py`) on a genuine PlantVillage image:
+  ground truth `Apple___Cedar_apple_rust`; Qwen3-VL zero-shot got species (*Malus
+  domestica*) and disease-vs-healthy right, but guessed the wrong specific disease (Apple
+  Scab/Blotch) — concrete evidence for why the RAG-grounding step matters, not just a
+  synthetic-noise smoke test.
