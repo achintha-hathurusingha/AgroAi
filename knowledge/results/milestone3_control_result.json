@@ -1,0 +1,46 @@
+{
+  "test_image": "/home/minura/agrivision-rag/data/plantvillage/raw/color/Cherry_(including_sour)___Powdery_mildew/3c726192-540f-4ce5-9590-0aa8500e195c___FREC_Pwd.M 0547.JPG",
+  "ground_truth_disease": "powdery mildew",
+  "query_text": "Species: unknown\nVisible symptoms:\n- Leaf is ovate with a pointed apex\n- Veins are prominent and form a clear network\n- Surface has mottled or blotchy discoloration\n- Some areas appear darker green or brownish\n- Margins show slight curling or irregularity\n- Base of leaf has a small, yellowish petiole remnant",
+  "top5_results": [
+    {
+      "rank": 1,
+      "fact_id": "fact_034031",
+      "disease": "leaf blotch",
+      "species_raw": "peony",
+      "similarity": 0.8162450194358826
+    },
+    {
+      "rank": 2,
+      "fact_id": "fact_005655",
+      "disease": "scorch and chlorosis",
+      "species_raw": "maple",
+      "similarity": 0.8128330707550049
+    },
+    {
+      "rank": 3,
+      "fact_id": "fact_014328",
+      "disease": "iron chlorosis",
+      "species_raw": "oak tree",
+      "similarity": 0.8118767738342285
+    },
+    {
+      "rank": 4,
+      "fact_id": "fact_031384",
+      "disease": "phyllosticta leaf spot",
+      "species_raw": "japanese maple",
+      "similarity": 0.8064820766448975
+    },
+    {
+      "rank": 5,
+      "fact_id": "fact_031453",
+      "disease": "chemical burn",
+      "species_raw": "joe pye weed",
+      "similarity": 0.8019155263900757
+    }
+  ],
+  "hit_rank": null,
+  "top1": false,
+  "top3": false,
+  "top5": false
+}
