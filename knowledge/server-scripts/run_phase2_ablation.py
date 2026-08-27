@@ -35,19 +35,43 @@ QUERY_PROMPT = (
 )
 
 DIAGNOSIS_PROMPT_NO_EVIDENCE = (
-    "You are an expert plant pathologist. Examine this leaf image and provide a "
-    "diagnosis. Respond in exactly this format:\n"
-    "Diagnosis: <disease name, or \"healthy\" if no disease is visible, or \"unknown\" if you cannot determine it>\n"
+    "You are an expert plant pathologist reviewing a leaf image submitted specifically "
+    "because the grower suspected a problem. Most such images do show some sign of "
+    "disease, pest damage, or stress -- carefully inspect for spots, lesions, "
+    "discoloration, powdery or fuzzy coatings, holes, wilting, curling, or any other "
+    "abnormality before concluding the leaf is healthy. Any spots or discoloration should "
+    "be treated as a likely disease sign, not dismissed as natural wear, unless clearly "
+    "just an artifact of leaf age near the stem/edges.\n\n"
+    "Respond in exactly this format:\n"
+    "Observed signs: <describe every visible spot, lesion, discoloration, texture change, "
+    "or abnormality, or state \"none\" only if the leaf is genuinely uniform and unmarked>\n"
+    "Diagnosis: <a specific disease name if any signs were observed; \"healthy\" ONLY if "
+    "you stated \"none\" above. If signs were observed, give your single best-guess "
+    "specific diagnosis even if uncertain -- a specific guess is more useful than "
+    "declining to answer. Only answer \"unknown\" if signs were observed and you truly "
+    "have no plausible guess at all.>\n"
     "Confidence: <a number from 0 to 100>\n"
     "Reasoning: <one to two sentences explaining your diagnosis>"
 )
 
 DIAGNOSIS_PROMPT_WITH_EVIDENCE_TMPL = (
-    "You are an expert plant pathologist. Examine this leaf image. Here is retrieved "
-    "reference information that may or may not be relevant:\n\n{evidence}\n\n"
-    "Based on the image and, where relevant, the reference information above, provide a "
-    "diagnosis. Respond in exactly this format:\n"
-    "Diagnosis: <disease name, or \"healthy\" if no disease is visible, or \"unknown\" if you cannot determine it>\n"
+    "You are an expert plant pathologist reviewing a leaf image submitted specifically "
+    "because the grower suspected a problem. Most such images do show some sign of "
+    "disease, pest damage, or stress -- carefully inspect for spots, lesions, "
+    "discoloration, powdery or fuzzy coatings, holes, wilting, curling, or any other "
+    "abnormality before concluding the leaf is healthy. Any spots or discoloration should "
+    "be treated as a likely disease sign, not dismissed as natural wear, unless clearly "
+    "just an artifact of leaf age near the stem/edges. Here is retrieved reference "
+    "information that may or may not be relevant:\n\n{evidence}\n\n"
+    "Based on the image and, where relevant, the reference information above, respond in "
+    "exactly this format:\n"
+    "Observed signs: <describe every visible spot, lesion, discoloration, texture change, "
+    "or abnormality, or state \"none\" only if the leaf is genuinely uniform and unmarked>\n"
+    "Diagnosis: <a specific disease name if any signs were observed; \"healthy\" ONLY if "
+    "you stated \"none\" above. If signs were observed, give your single best-guess "
+    "specific diagnosis even if uncertain -- a specific guess is more useful than "
+    "declining to answer. Only answer \"unknown\" if signs were observed and you truly "
+    "have no plausible guess at all.>\n"
     "Confidence: <a number from 0 to 100>\n"
     "Reasoning: <one to two sentences explaining your diagnosis and whether the reference information supported it>"
 )
@@ -97,21 +121,25 @@ def generate(model, processor, image, prompt, max_new_tokens=200):
         messages, tokenize=True, add_generation_prompt=True, return_dict=True, return_tensors="pt"
     ).to(model.device)
     with torch.no_grad():
-        # NOTE: do_sample=False (greedy) was tried first for reproducibility and caused a
-        # severe degenerate collapse -- Arm 1 predicted "healthy" in 80% of 610 cases
-        # (true rate 29.5%), with 100% accuracy on healthy cases and 0.5% on diseased
-        # ones. Reverted to the model's default sampling config, matching every
-        # successful Phase 1B script, none of which showed this collapse.
+        # NOTE: do_sample=False (greedy) was tried first for reproducibility; Arm 1
+        # predicted "healthy" in 80% of 610 cases (true rate 29.5%). Reverting to sampling
+        # barely changed this (78.4% on a diverse 51-case cross-section) -- the actual
+        # cause was the diagnosis prompt itself offering "healthy"/"unknown" as easy
+        # escape hatches, causing the model to rationalize real visible symptoms away as
+        # "natural wear." Fixed by rewriting the prompt (see DIAGNOSIS_PROMPT_* above),
+        # not by decoding settings. Kept sampling since Phase 1B never showed collapse.
         out = model.generate(**inputs, max_new_tokens=max_new_tokens)
     return processor.batch_decode(out[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)[0]
 
 
 def parse_diagnosis(text):
-    d = {"diagnosis": None, "confidence": None, "reasoning": None}
+    d = {"observed_signs": None, "diagnosis": None, "confidence": None, "reasoning": None}
     for line in text.splitlines():
         line = line.strip()
         low = line.lower()
-        if low.startswith("diagnosis:"):
+        if low.startswith("observed signs:"):
+            d["observed_signs"] = line.split(":", 1)[1].strip()
+        elif low.startswith("diagnosis:"):
             d["diagnosis"] = line.split(":", 1)[1].strip().strip('"')
         elif low.startswith("confidence:"):
             m = re.search(r"\d+(\.\d+)?", line.split(":", 1)[1])
