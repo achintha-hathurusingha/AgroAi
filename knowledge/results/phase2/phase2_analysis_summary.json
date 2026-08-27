@@ -1,0 +1,12 @@
+{
+  "n_primary": 465,
+  "n_weak_match": 105,
+  "n_agmmu_excluded": 40,
+  "accuracy": {
+    "1_vlm_only": 0.37849462365591396,
+    "2_rag_bge": 0.3935483870967742,
+    "3_rag_siglip": 0.3913978494623656,
+    "4_rag_full_corpus": 0.3935483870967742,
+    "5_rag_rerank": 0.3827956989247312
+  }
+}
