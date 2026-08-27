@@ -102,7 +102,8 @@ def main():
         inputs = processor(text=batch, padding="max_length", truncation=True, return_tensors="pt").to(device)
         with torch.no_grad():
             out = model.get_text_features(**inputs)
-        feat = torch.nn.functional.normalize(out.float(), dim=-1)
+        feat = out.pooler_output if hasattr(out, "pooler_output") else out
+        feat = torch.nn.functional.normalize(feat.float(), dim=-1)
         embs.append(feat.cpu())
         if i % (batch_size * 20) == 0:
             print(f"  {i}/{len(short_texts)}")
