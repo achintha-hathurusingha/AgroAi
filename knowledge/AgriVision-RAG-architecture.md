@@ -215,13 +215,20 @@ original five.)*
   in a cloned `agrivision` env). SSH key: `Achintha` (kept out of this repo via
   `.gitignore` — never commit it).
 - `qbits` (192.248.10.67) — a shared multi-user server, RTX 4080 SUPER (16GB), `/home` at
-  99% usage (only ~27-51GB free, shared across ~9 users). Used for initial setup/testing;
-  work has since moved to `devon` for more VRAM and disk headroom. GPU freed there
-  (`~/agrivision-rag/stop.sh`) once no longer in active use, since it's shared.
-  No sudo access on qbits — `mount -t nfs` and the `unshare --map-root-user` unprivileged
-  workaround are both blocked there (no fstab `user` entry, AppArmor restricts unprivileged
-  user namespaces on Ubuntu 24.04). `minura` *does* appear to be a real sudoer on devon
-  (untested — no root action has been needed there yet).
+  99% usage (only ~27-51GB free, shared across ~9 users). Used for initial setup/testing
+  and, since it has spare GPU capacity, cheap parallel jobs (e.g. Experiment 2's retrieval
+  decomposition) alongside devon's heavier work. GPU freed there (`~/agrivision-rag/stop.sh`)
+  once no longer in active use, since it's shared.
+  **Update 2026-08-27: `minura` was added to the `sudo` group** (previously blocked —
+  "not in the sudoers file"). With sudo now working, mounted an NFS share for extra
+  storage: `sudo mount -t nfs -o vers=4 10.8.158.19:/srv/nfs/gpu-share /mnt/gpu-nfs-share`
+  (needed `sudo apt-get install nfs-common` first — the mount helper wasn't installed;
+  this triggered Ubuntu's standard post-install notice about an already-pending kernel
+  upgrade, unrelated to the install — did **not** reboot, since qbits has other active
+  users). Result: 93GB free at `/mnt/gpu-nfs-share`, resolving the disk constraint that
+  limited qbits work throughout Phase 1. **Not yet in `/etc/fstab`** — this mount will
+  not survive a reboot until added there. `minura` *does* appear to be a real sudoer on
+  devon too (untested — no root action has been needed there yet).
 - On `devon`: models cached under `~/.cache/huggingface` (SigLIP, Qwen3-VL-8B-Instruct —
   22GB+), datasets under `~/agrivision-rag/data/` (PlantVillage color split extracted,
   923MB, 38 classes/54,305 images; AgMMU JSON facts + eval images extracted, 17GB, 770
