@@ -1,0 +1,44 @@
+{
+  "main_ablation_1_vlm_only": {
+    "strict": 0.37849462365591396,
+    "alias": 0.37849462365591396,
+    "n": 465,
+    "rescued": 0
+  },
+  "main_ablation_2_rag_bge": {
+    "strict": 0.3935483870967742,
+    "alias": 0.3956989247311828,
+    "n": 465,
+    "rescued": 1
+  },
+  "main_ablation_3_rag_siglip": {
+    "strict": 0.3913978494623656,
+    "alias": 0.3913978494623656,
+    "n": 465,
+    "rescued": 0
+  },
+  "main_ablation_4_rag_full_corpus": {
+    "strict": 0.3935483870967742,
+    "alias": 0.3935483870967742,
+    "n": 465,
+    "rescued": 0
+  },
+  "main_ablation_5_rag_rerank": {
+    "strict": 0.3827956989247312,
+    "alias": 0.3913978494623656,
+    "n": 465,
+    "rescued": 4
+  },
+  "oracle": {
+    "strict": 0.7591397849462366,
+    "alias": 0.7870967741935484,
+    "n": 465,
+    "rescued": 13
+  },
+  "stageD_visual_rag": {
+    "strict": 0.44516129032258067,
+    "alias": 0.45161290322580644,
+    "n": 465,
+    "rescued": 3
+  }
+}
