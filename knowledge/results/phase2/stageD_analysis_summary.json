@@ -1,0 +1,6 @@
+{
+  "n": 465,
+  "accuracy_stageD": 0.44516129032258067,
+  "accuracy_vlm_only": 0.37849462365591396,
+  "accuracy_rag_bge": 0.3935483870967742
+}
